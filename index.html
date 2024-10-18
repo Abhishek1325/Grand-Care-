@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elderly Care</title>
+    <link rel="stylesheet" href="styling.css">
+    
+</head>
+<body>
+    <script src="script.js"></script>
+    <header>
+        <h1>Elderly Care Assistance</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#tracking">Tracking</a></li>
+            <li><a href="#walking">Walking Assistance</a></li>
+            <li><a href="#medication">Daily Medication</a></li>
+        </ul>
+    </nav>
+
+    <section id="tracking">
+        <h2>Tracking</h2>
+        <p>GPS-enabled tracking for ensuring safety.</p>
+        <button id="getloc">Start Tracking</button>
+        <p id="location"></p>
+    </section>
+
+    <section id="walking">
+        <h2>Walking Assistance</h2>
+        <p>Step-by-step walking guide and balance reminders.</p>
+        <button onclick="startWalking()"><a href="pedometer.html">Start Walking</a></button>
+    </section>
+
+    <section id="medication">
+        <h2>Daily Medication</h2>
+        <p>Reminder to take daily medications.</p>
+        <button onclick="medicationReminder()"><a href="Reminder/index.html">Set Medication Reminder</a></button>
+    
+        <p id="reminder"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Elderly Care Solutions</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

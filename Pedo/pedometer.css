@@ -1,0 +1,80 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Pedometer Container */
+.pedometer-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 320px;
+}
+
+.pedometer-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #4A90E2;
+}
+
+/* Stat Box Styles */
+.stat-box {
+    background-color: #fff;
+    border: 1px solid #e0e4e8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-box h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.stat-box .number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4A90E2;
+}
+
+/* Goal Box Styles */
+.goal-box {
+    text-align: left;
+}
+
+.goal-box h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Progress Bar Styles */
+.progress-bar {
+    width: 100%;
+    background-color: #e0e4e8;
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: #4A90E2;
+    height: 100%;
+    transition: width 0.5s;
+}
+
+.goal-box p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}

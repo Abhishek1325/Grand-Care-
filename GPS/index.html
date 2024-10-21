@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Location to Emergency Contact</title>
+    <link rel="stylesheet" href="gps.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Send Your Location to Emergency Contact</h1>
+
+        <p>Click the button below to share your current location with an emergency contact:</p>
+
+        <input type="email" id="emergencyEmail" placeholder="Enter emergency contact's email" required><br>
+
+        <button id="getLocationBtn">Get and Send Location</button>
+
+        <div id="locationInfo" class="location-info">
+            <!-- User location data will appear here -->
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_EMAILJS_USER_ID"); // Add your EmailJS user ID
+        })();
+    </script>
+    
+    <script src="gps.js"></script>
+</body>
+</html>

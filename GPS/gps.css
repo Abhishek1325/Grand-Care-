@@ -1,0 +1,59 @@
+/* styles.css */
+body {
+    background-image: url(https://www.shutterstock.com/image-vector/map-world-on-blur-backgroundclean-260nw-205374328.jpg);
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.location-info {
+    margin-top: 20px;
+    background-color: #e8f4fa;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #cce1eb;
+    display: none; /* Hidden by default */
+}
+
+.error {
+    color: red;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

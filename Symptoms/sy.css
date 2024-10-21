@@ -1,0 +1,67 @@
+/* styles.css */
+body {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9FtFimWiUJCN9pB7v_77e1Wga_VhchYrWmg&s);
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    height: 100vh; /* Set height to 100% of the viewport height */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.container {
+    max-width: 500px;
+    width: 100%; /* Make it responsive */
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e8f4fa;
+    border-radius: 5px;
+    border: 1px solid #cce1eb;
+    color: #333;
+}

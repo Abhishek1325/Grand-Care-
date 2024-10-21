@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker</title>
+    <link rel="stylesheet" href="sy.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Symptom Checker</h1>
+
+        <form id="symptom-form">
+            <label for="symptom1">Select Symptom 1:</label>
+            <select id="symptom1" required>
+                <option value="">-- Select a symptom --</option>
+                <option value="fever">Fever</option>
+                <option value="cough">Cough</option>
+                <option value="headache">Headache</option>
+                <option value="fatigue">Fatigue</option>
+            </select>
+
+            <label for="symptom2">Select Symptom 2:</label>
+            <select id="symptom2">
+                <option value="">-- Select a symptom --</option>
+                <option value="fever">Fever</option>
+                <option value="cough">Cough</option>
+                <option value="headache">Headache</option>
+                <option value="fatigue">Fatigue</option>
+            </select>
+
+            <label for="symptom3">Select Symptom 3:</label>
+            <select id="symptom3">
+                <option value="">-- Select a symptom --</option>
+                <option value="fever">Fever</option>
+                <option value="cough">Cough</option>
+                <option value="headache">Headache</option>
+                <option value="fatigue">Fatigue</option>
+            </select>
+
+            <button type="submit">Check Symptoms</button>
+        </form>
+
+        <div id="result" class="result">
+            <!-- Potential conditions will be displayed here -->
+        </div>
+    </div>
+
+    <script src="sy.js"></script>
+</body>
+</html>

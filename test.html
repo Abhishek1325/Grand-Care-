@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Checkup Reminder</title>
+    <style>
+        body {background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqyMxumXsN7DwbMNHmRoLtm7ShVhJBiTxFMA&s);
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .reminder-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #reminder-message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="reminder-container">
+        <h1>Set a Body Checkup Reminder</h1>
+        <label for="days">Enter number of days until your next checkup:</label>
+        <input type="number" id="days" min="1" placeholder="Enter days (e.g., 5)">
+        <button onclick="setReminder()">Set Reminder</button>
+
+        <p id="reminder-message"></p>
+    </div>
+
+    <script>
+        function setReminder() {
+            const daysInput = document.getElementById('days');
+            const reminderMessage = document.getElementById('reminder-message');
+
+            // Get the number of days entered by the user
+            const days = parseInt(daysInput.value);
+
+            if (isNaN(days) || days <= 0) {
+                reminderMessage.textContent = "Please enter a valid number of days!";
+                reminderMessage.style.color = 'red';
+                return;
+            }
+
+            // Calculate the time in milliseconds (days * 24 * 60 * 60 * 1000)
+            const reminderTime = days * 24 * 60 * 60 * 1000;
+
+            // Display a message to the user
+            reminderMessage.textContent = "Your reminder has been set for " + days + " day(s) from now!";
+            reminderMessage.style.color = 'green';
+
+            // Set a timeout for the reminder
+            setTimeout(() => {
+                alert("It's time for your body checkup! Please take care of your health.");
+            }, reminderTime);
+        }
+    </script>
+</body>
+</html>

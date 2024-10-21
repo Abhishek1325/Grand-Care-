@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Reminder with Alarm and Removal</title>
+    <style>
+        body {
+            background-image: url(https://www.shutterstock.com/image-photo/blur-medicines-background-260nw-408460270.jpg);
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .reminder-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="time"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #medicine-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        #medicine-list li {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="reminder-container">
+        <h1>Set Medicine Reminder</h1>
+
+        <label for="medicine-name">Medicine Name:</label>
+        <input type="text" id="medicine-name" placeholder="Enter medicine name">
+
+        <label for="reminder-time">Set Reminder Time:</label>
+        <input type="time" id="reminder-time">
+
+        <button onclick="addMedicine()">Add Medicine</button>
+
+        <ul id="medicine-list"></ul>
+    </div>
+
+    <!-- Hidden audio element to play the alarm sound -->
+    <audio id="alarm-sound" src="alarm.mp3" preload="auto"></audio>
+
+    <script>
+        let medicines = [];
+
+        function addMedicine() {
+            const medicineName = document.getElementById('medicine-name').value;
+            const reminderTime = document.getElementById('reminder-time').value;
+            const medicineList = document.getElementById('medicine-list');
+            const alarmSound = document.getElementById('alarm-sound');
+
+            if (medicineName === '' || reminderTime === '') {
+                alert('Please fill out both fields.');
+                return;
+            }
+
+            const reminderTimeInMs = new Date();
+            const [hours, minutes] = reminderTime.split(':');
+            reminderTimeInMs.setHours(hours, minutes, 0, 0);
+
+            const now = new Date().getTime();
+            const timeDifference = reminderTimeInMs.getTime() - now;
+
+            // Generate a unique ID for the medicine
+            const medicineId = new Date().getTime();
+
+            // Add the medicine to the list
+            const medicine = {
+                id: medicineId,
+                name: medicineName,
+                time: reminderTimeInMs.getTime(),
+                timeoutId: null // Placeholder for the timeout ID
+            };
+            medicines.push(medicine);
+
+            // Display the added medicine
+            const listItem = document.createElement('li');
+            listItem.id = `medicine-${medicineId}`;
+            listItem.innerHTML = `${medicineName} - Reminder set for ${reminderTime} 
+            <button class="remove-btn" onclick="removeMedicine(${medicineId})">Remove</button>`;
+            medicineList.appendChild(listItem);
+
+            // Set a timeout to remind the user when the time arrives
+            medicine.timeoutId = setTimeout(() => {
+                alarmSound.play();
+                alert(`Time to take your medicine: ${medicineName}`);
+            }, timeDifference);
+
+            // Clear input fields
+            document.getElementById('medicine-name').value = '';
+            document.getElementById('reminder-time').value = '';
+        }
+
+        function removeMedicine(medicineId) {
+            // Find the medicine in the list
+            const medicineIndex = medicines.findIndex(m => m.id === medicineId);
+
+            if (medicineIndex !== -1) {
+                // Clear the timeout to cancel the reminder
+                clearTimeout(medicines[medicineIndex].timeoutId);
+
+                // Remove the medicine from the list
+                medicines.splice(medicineIndex, 1);
+
+                // Remove the medicine from the display
+                const medicineItem = document.getElementById(`medicine-${medicineId}`);
+                medicineItem.remove();
+            }
+        }
+    </script>
+</body>
+</html>

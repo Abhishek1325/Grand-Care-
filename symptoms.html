@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .checker-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .symptom {
+            margin-bottom: 10px;
+            display: block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="checker-container">
+        <h1>Symptom Checker</h1>
+        
+        <label class="symptom">
+            <input type="checkbox" name="symptom" value="fever"> Fever
+        </label>
+
+        <label class="symptom">
+            <input type="checkbox" name="symptom" value="cough"> Cough
+        </label>
+
+        <label class="symptom">
+            <input type="checkbox" name="symptom" value="fatigue"> Fatigue
+        </label>
+
+        <label class="symptom">
+            <input type="checkbox" name="symptom" value="headache"> Headache
+        </label>
+
+        <label class="symptom">
+            <input type="checkbox" name="symptom" value="nausea"> Nausea
+        </label>
+
+        <label class="symptom">
+            <input type="checkbox" name="symptom" value="sore_throat"> Sore Throat
+        </label>
+
+        <button onclick="checkSymptoms()">Check Symptoms</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkSymptoms() {
+            const symptoms = document.querySelectorAll('input[name="symptom"]:checked');
+            let selectedSymptoms = [];
+
+            symptoms.forEach(symptom => {
+                selectedSymptoms.push(symptom.value);
+            });
+
+            let resultMessage = '';
+
+            // Simple condition matching (for demo purposes)
+            if (selectedSymptoms.includes('fever') && selectedSymptoms.includes('cough')) {
+                resultMessage = 'You may have the flu or a common cold.';
+            } else if (selectedSymptoms.includes('headache') && selectedSymptoms.includes('fatigue')) {
+                resultMessage = 'You might be experiencing stress or dehydration.';
+            } else if (selectedSymptoms.includes('nausea') && selectedSymptoms.includes('sore_throat')) {
+                resultMessage = 'You might have a stomach infection or food poisoning.';
+            } else if (selectedSymptoms.length === 0) {
+                resultMessage = 'Please select at least one symptom.';
+            } else {
+                resultMessage = 'Your symptoms may indicate something common, but consult a doctor for accurate diagnosis.';
+            }
+
+            document.getElementById('result').textContent = resultMessage;
+        }
+    </script>
+</body>
+</html>
